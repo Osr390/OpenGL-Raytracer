@@ -1,4 +1,5 @@
 # TTRT (Temporal Tales Ray Transform)
+![alt text](https://github.com/Osr390/TTRT-OpenGL-Raytracer/blob/main/Scene2_PT.png?raw=true)
 ## Overview
 A real-time, brute-force software path tracer written in pure C (C23). It utilizes OpenGL Compute Shaders to simulate realistic light transport without relying on hardware-accelerated DXR.
 
