@@ -28,9 +28,9 @@ int main() {
     while (!WindowShouldClose()) {
 
         // 1. INPUT & UPDATE
-        // SprawdŸ czy scena zosta³a zmieniona (Klawisze 1, 2)
+        // SprawdÅ¸ czy scena zostaÂ³a zmieniona (Klawisze 1, 2)
         if (HandleSceneInput(&scene)) {
-            // Jeœli tak, zaktualizuj shader o nowe liczniki trójk¹tów
+            // JeÅ“li tak, zaktualizuj shader o nowe liczniki trÃ³jkÂ¹tÃ³w
             rlEnableShader(renderer.id);
             UploadStaticUniforms(&renderer, &scene);
             rlDisableShader();
@@ -38,29 +38,23 @@ int main() {
             renderer.accumFrame = 1; // Reset akumulacji
         }
 
-        // SprawdŸ czy kamera siê ruszy³a
+        // SprawdÅ¸ czy kamera siÃª ruszyÂ³a
         if (UpdateSceneCamera(&scene)) {
             renderer.accumFrame = 1;
         }
 
-        // Obs³uga shadera (Skala, Reload, Mode)
+        // ObsÂ³uga shadera (Skala, Reload, Mode)
         HandleRendererInput(&renderer, &scene);
 
 
         // 2. GPU COMPUTE PASS (Raytracing)
-        // Jeœli kamera stoi w miejscu, zwiêkszamy licznik akumulacji
         if (renderer.accumFrame > 1000) renderer.accumFrame = 1000; // Cap
-        else renderer.accumFrame++; // W innym wypadku main.c decydowa³, tu robi to renderer na podstawie inputu
-
-        // *Ma³a poprawka do logiki accumFrame*: W poprzednim kodzie resetowa³eœ go warunkowo.
-        // Tutaj Handle/Update zwracaj¹ true jeœli trzeba zresetowaæ.
-        // W przeciwnym razie inkrementujemy wewn¹trz RenderPathTracer lub tutaj.
-        // Zostawmy inkrementacjê tutaj dla jasnoœci:
+        else renderer.accumFrame++; // W innym wypadku main.c decydowaÂ³, tu robi to renderer na podstawie inputu
 
         RenderPathTracer(&renderer, &scene);
 
 
-        // 3. DRAW PASS (Wyœwietlanie)
+        // 3. DRAW PASS (WyÅ“wietlanie)
         BeginDrawing();
         ClearBackground(BLACK);
 
